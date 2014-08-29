@@ -115,6 +115,8 @@ controlpage.onAlert=function(msg){
 			respond([id,cmdId,'pageRenderBase64Done', result]);
 			break;
 		case 'pageSet':
+			eval('request[4].header.contents = phantom.callback('+request[4].header.contents+')');
+			eval('request[4].footer.contents = phantom.callback('+request[4].footer.contents+')');
 			page[request[3]]=request[4];
 			respond([id,cmdId,'pageSetDone']);
 			break;
